@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Roba",
+      "email": "roba@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "name": "Abel",
+      "email": "abel@gmail.com",
+      "password": "abcdef"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Learn React basics",
+      "status": "completed",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "title": "Build Task App UI",
+      "status": "pending",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "title": "Study Zustand",
+      "status": "pending",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "title": "Practice JavaScript",
+      "status": "completed",
+      "userId": 2
+    },
+    {
+      "id": 5,
+      "title": "Create API with JSON Server",
+      "status": "pending",
+      "userId": 2
+    }
+    
+    
+  ]
+}
