@@ -1,21 +1,14 @@
-import Button from "./component/ui/button"
-import AppLayout from "./routes/AppLayout"
+import AppLayout from "./routes/AppLayout";
+import AppRoutes from "./routes/routes";
+import { BrowserRouter } from "react-router-dom";
 function App() {
- 
   return (
- <AppLayout>
-   <div>
-    <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
-   <Button
-    text="login"
-    variant="primary"
-    />
-    <button className="text-white bg-blue-800 w-1/2 rounded p-3">login</button>
-  </div>
- </AppLayout>
-  )
+    <AppLayout>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </AppLayout>
+  );
 }
 
-export default App
+export default App;

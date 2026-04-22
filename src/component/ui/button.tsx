@@ -19,9 +19,9 @@ const Button = ({
   onHandleClick,
 }: Props) => {
   const variants = {
-    primary: "bg-orange-500 text-white hover:bg-orange-600 rounded-2xl",
+    primary: "bg-white text-purple-600 hover:bg-gray-200 rounded-2xl",
     secondary: "bg-orange-200 text-black hover:bg-orange-300",
-    tertiary: "bg-transparent text-blue-500 hover:bg-blue-100",
+    tertiary: "bg-transparent text-white hover:bg-white hover:text-purple-600",
     danger: "bg-red-500 text-white hover:bg-red-600",
     success: "bg-green-500 text-white hover:bg-green-600",
     link: "bg-transparent text-blue-500 hover:underline hover:bg-gray-200 rounded-2xl",

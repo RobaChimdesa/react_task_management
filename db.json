@@ -1,50 +1,52 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Roba",
-      "email": "roba@gmail.com",
-      "password": "123456"
+      "name": "Roba Chimdesa",
+      "email": "robachimdesa123@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "id": "x3RLsdq6_Pw"
     },
     {
-      "id": 2,
-      "name": "Abel",
-      "email": "abel@gmail.com",
-      "password": "abcdef"
+      "name": "Ano Chimdesa",
+      "email": "ano123@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678",
+      "id": "PhxoIWTbfYU"
     }
+    
   ],
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Learn React basics",
       "status": "completed",
       "userId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Build Task App UI",
       "status": "pending",
       "userId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Study Zustand",
       "status": "pending",
       "userId": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "Practice JavaScript",
       "status": "completed",
       "userId": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Create API with JSON Server",
       "status": "pending",
       "userId": 2
     }
-    
-    
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
