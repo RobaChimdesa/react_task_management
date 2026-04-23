@@ -2,5 +2,6 @@
 export const  Pages_Routes = {
     home:"/",
     sign_in:"/sign-in",
-    sign_up:"/create-acount"
+    sign_up:"/create-acount",
+    dashboard:"/dashboard"
 }

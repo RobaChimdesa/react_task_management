@@ -38,23 +38,26 @@ const useUserForm = (type: FormType) => {
   };
 
   const [formData, setFormData] = useState<SignInData | SignUpData>(
-    type === "signin" ? initialSignInState : initialSignUpState
+    type === "signin" ? initialSignInState : initialSignUpState,
   );
-  
+
   const [errors, setErrors] = useState<FormErrors>({});
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
   // Handle input changes
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-    
-    // Clear error for this field when user starts typing
-    if (errors[name as keyof FormErrors]) {
-      setErrors((prev) => ({ ...prev, [name]: undefined }));
-    }
-  }, [errors]);
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [name]: value }));
+
+      // Clear error for this field when user starts typing
+      if (errors[name as keyof FormErrors]) {
+        setErrors((prev) => ({ ...prev, [name]: undefined }));
+      }
+    },
+    [errors],
+  );
 
   // Validate Sign In form
   const validateSignIn = useCallback((): boolean => {
@@ -111,25 +114,28 @@ const useUserForm = (type: FormType) => {
   }, [formData]);
 
   // Submit handler
-  const handleSubmit = useCallback(async (
-    e: React.FormEvent,
-    onSubmit: (data: SignInData | SignUpData) => Promise<void>
-  ) => {
-    e.preventDefault();
-    
-    const isValid = type === "signin" ? validateSignIn() : validateSignUp();
-    
-    if (!isValid) return;
-    
-    setIsLoading(true);
-    try {
-      await onSubmit(formData);
-    } catch (error) {
-      console.error("Form submission error:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [formData, type, validateSignIn, validateSignUp]);
+  const handleSubmit = useCallback(
+    async (
+      e: React.FormEvent,
+      onSubmit: (data: SignInData | SignUpData) => Promise<void>,
+    ) => {
+      e.preventDefault();
+
+      const isValid = type === "signin" ? validateSignIn() : validateSignUp();
+
+      if (!isValid) return;
+
+      setIsLoading(true);
+      try {
+        await onSubmit(formData);
+      } catch (error) {
+        console.error("Form submission error:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [formData, type, validateSignIn, validateSignUp],
+  );
 
   // Reset form
   const resetForm = useCallback(() => {
@@ -143,12 +149,15 @@ const useUserForm = (type: FormType) => {
   }, []);
 
   // Get field props for input elements
-  const getFieldProps = useCallback((fieldName: string) => ({
-    name: fieldName,
-    value: (formData as any)[fieldName] || "",
-    onChange: handleChange,
-    error: errors[fieldName as keyof FormErrors],
-  }), [formData, handleChange, errors]);
+  const getFieldProps = useCallback(
+    (fieldName: string) => ({
+      name: fieldName,
+      value: (formData as any)[fieldName] || "",
+      onChange: handleChange,
+      error: errors[fieldName as keyof FormErrors],
+    }),
+    [formData, handleChange, errors],
+  );
 
   return {
     formData,

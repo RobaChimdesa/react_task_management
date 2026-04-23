@@ -4,6 +4,7 @@ import { forAuth } from "../assets/image";
 import useUserForm from "../hooks/useUserForm";
 import { API_URL } from "../config/dot-env.config";
 import { Pages_Routes } from "../utils/pages-routes";
+import { useAuthStore } from "../store/authStore";
 
 const SignInComp = () => {
 const navigate = useNavigate();
@@ -18,6 +19,8 @@ const [errorMessage, setErrorMessage] = useState("");
     setIsLoading
   } = useUserForm("signin");
 
+const login = useAuthStore((state)=> state.login)
+
   const handleSignIn = async (data:any) => {
     try {
         const userList = await fetch(`${API_URL}/users`, {
@@ -30,9 +33,8 @@ const [errorMessage, setErrorMessage] = useState("");
                 user.email === data.email && user.password === data.password
         );
         if (currentUser.length > 0) {
-            console.log("validated user")
-            alert(`well come ${currentUser[0].email}`)
-            navigate(Pages_Routes.home)
+            login(currentUser[0])
+            navigate(Pages_Routes.dashboard)
         }
         else{
             console.log("invalid use")

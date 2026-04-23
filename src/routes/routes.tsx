@@ -4,6 +4,8 @@ import SignINPage from "../home/page/SigninPage";
 // import SignINPage from "../home/page/SigninPage";
 import CreateAccount from "../home/page/CreateAccount";
 import HomePage from "../home/page/HomePage";
+import ProtectedRoute from "../Users/ProtectedRoute";
+import Dashboard from "../Users/Dashboard";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -21,6 +23,15 @@ const AppRoutes = () => {
         key={"urlsigninpage"}
         path={Pages_Routes.sign_in}
         element={<SignINPage />}
+      />
+      <Route
+        key={"urldashboard"}
+        path={Pages_Routes.dashboard}
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
       />
     </Routes>
   );
