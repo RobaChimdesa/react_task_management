@@ -52,6 +52,20 @@
       "title": "Create API with JSON Server",
       "status": "pending",
       "userId": 2
+    },
+    {
+      "title": "wash dish",
+      "completed": false,
+      "userId": "PhxoIWTbfYU",
+      "deadline": "2026-04-09",
+      "id": "qy17m10TFVQ"
+    },
+    {
+      "title": "read a document",
+      "completed": false,
+      "userId": "x3RLsdq6_Pw",
+      "deadline": "2026-04-24",
+      "id": "0kGeqzQpwYc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
