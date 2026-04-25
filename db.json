@@ -61,11 +61,25 @@
       "id": "qy17m10TFVQ"
     },
     {
-      "title": "read a document",
+      "title": "make a breakfast",
+      "completed": false,
+      "userId": "PhxoIWTbfYU",
+      "deadline": "2026-04-25",
+      "id": "tHSK6k9x90I"
+    },
+    {
+      "title": "make breakfast",
       "completed": false,
       "userId": "x3RLsdq6_Pw",
-      "deadline": "2026-04-24",
-      "id": "0kGeqzQpwYc"
+      "deadline": "2026-04-25",
+      "id": "PBJN5pdu5wI"
+    },
+    {
+      "title": "do project",
+      "completed": false,
+      "userId": "x3RLsdq6_Pw",
+      "deadline": "2026-04-30",
+      "id": "3JlBYBFohTg"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

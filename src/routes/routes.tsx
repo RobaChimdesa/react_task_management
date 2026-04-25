@@ -6,6 +6,7 @@ import CreateAccount from "../home/page/CreateAccount";
 import HomePage from "../home/page/HomePage";
 import ProtectedRoute from "../Users/ProtectedRoute";
 import Dashboard from "../Users/Dashboard";
+import CreateTask from "../Users/userCreateTaskPage";
 const AppRoutes = () => {
   return (
     <Routes>
@@ -30,6 +31,15 @@ const AppRoutes = () => {
         element={
           <ProtectedRoute>
             <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        key={"urlcreateTask"}
+        path={Pages_Routes.create_task}
+        element={
+          <ProtectedRoute>
+            <CreateTask />
           </ProtectedRoute>
         }
       />
