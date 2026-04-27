@@ -55,7 +55,7 @@
     },
     {
       "title": "wash dish",
-      "completed": false,
+      "completed": true,
       "userId": "PhxoIWTbfYU",
       "deadline": "2026-04-09",
       "id": "qy17m10TFVQ"
@@ -80,6 +80,27 @@
       "userId": "x3RLsdq6_Pw",
       "deadline": "2026-04-30",
       "id": "3JlBYBFohTg"
+    },
+    {
+      "title": "wash a cloth",
+      "completed": false,
+      "userId": "x3RLsdq6_Pw",
+      "deadline": "2026-04-25",
+      "id": "VCYrQH-MfL8"
+    },
+    {
+      "title": "go church",
+      "completed": false,
+      "userId": "PhxoIWTbfYU",
+      "deadline": "2026-04-26",
+      "id": "i4ij5C5tzAs"
+    },
+    {
+      "title": "do homework",
+      "completed": false,
+      "userId": "x3RLsdq6_Pw",
+      "deadline": "2026-04-27",
+      "id": "ID9TmYYXyh8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
