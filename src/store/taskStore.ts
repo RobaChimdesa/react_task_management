@@ -9,11 +9,15 @@ type Task = {
     completed:boolean;
     userId: string;
     deadline: string;
+    
 };
 
 type TaskStore = {
 
     tasks: Task[];
+    search: string;
+
+    setSearch: (value: string) => void;
 
     fetchTasks: (userId: string ) => Promise<void>;
 
@@ -30,6 +34,10 @@ type TaskStore = {
  export const useTaskStore = create<TaskStore>((set) => ({
 
     tasks: [],
+    search: "",
+
+    setSearch: (value) => set({ search: value }),
+    
 
    // 🔹 GET tasks
   fetchTasks: async (userId) => {
