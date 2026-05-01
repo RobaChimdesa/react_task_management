@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { forAuth } from "../assets/image";
 import useUserForm from "../hooks/useUserForm";
 import { API_URL } from "../config/dot-env.config";
@@ -7,46 +7,44 @@ import { Pages_Routes } from "../utils/pages-routes";
 import { useAuthStore } from "../store/authStore";
 
 const SignInComp = () => {
-const navigate = useNavigate();
-const [errorMessage, setErrorMessage] = useState("");
-  const { 
+  const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
+  const {
     errors,
     isLoading,
     showPassword,
     handleSubmit,
     togglePasswordVisibility,
     getFieldProps,
-    setIsLoading
+    setIsLoading,
   } = useUserForm("signin");
 
-const login = useAuthStore((state)=> state.login)
+  const login = useAuthStore((state) => state.login);
 
-  const handleSignIn = async (data:any) => {
+  const handleSignIn = async (data: any) => {
     try {
-        const userList = await fetch(`${API_URL}/users`, {
-          method: "GET",
-          headers: { "Content-Type": "application/json" },
-        });
-        const userData = await userList.json()
-        const currentUser = userData.filter(
-            (user:any)=>
-                user.email === data.email && user.password === data.password
-        );
-        if (currentUser.length > 0) {
-            login(currentUser[0])
-            navigate(Pages_Routes.dashboard)
-        }
-        else{
-            console.log("invalid use")
-             setErrorMessage("Invalid email or password");
-        }
-    } catch (error){
-        console.log("error during login",error)
+      const userList = await fetch(`${API_URL}/users`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      const userData = await userList.json();
+      const currentUser = userData.filter(
+        (user: any) =>
+          user.email === data.email && user.password === data.password,
+      );
+      if (currentUser.length > 0) {
+        login(currentUser[0]);
+        navigate(Pages_Routes.dashboard);
+      } else {
+        console.log("invalid use");
+        setErrorMessage("Invalid email or password");
+      }
+    } catch (error) {
+      console.log("error during login", error);
     }
-
   };
 
-    const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async () => {
     setIsLoading(true);
     try {
       console.log("Google login clicked");
@@ -57,11 +55,8 @@ const login = useAuthStore((state)=> state.login)
     }
   };
 
-
   return (
-    
     <div className="min-h-screen flex items-center justify-center p-8">
-        
       <div className="max-w-3xl  bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
         {/* Left Side - Sign In Form */}
 
@@ -69,10 +64,8 @@ const login = useAuthStore((state)=> state.login)
           {/* Logo and Title */}
           <div className="mb-2">
             {errorMessage && (
-  <span className="text-red-500 text-center ">
-    {errorMessage}
-  </span>
-)}
+              <span className="text-red-500 text-center ">{errorMessage}</span>
+            )}
             <h2 className="text-2xl font-bold text-blue-800 mb-2">Tasky</h2>
             <h3 className="text-2xl font-bold text-black mt-2">
               Wellcome Back!
@@ -80,7 +73,10 @@ const login = useAuthStore((state)=> state.login)
           </div>
 
           {/* Sign In Form */}
-          <form onSubmit={(e) => handleSubmit(e, handleSignIn)} className="space-y-3">
+          <form
+            onSubmit={(e) => handleSubmit(e, handleSignIn)}
+            className="space-y-3"
+          >
             {/* Email Field */}
             <div>
               <label className="block text-gray-700 font-medium mb-2">
@@ -104,37 +100,59 @@ const login = useAuthStore((state)=> state.login)
               <label className="block text-gray-700 font-medium mb-2">
                 Password
               </label>
-               <input
-                  type={showPassword ? "text" : "password"}
-                  {...getFieldProps("password")}
-                  placeholder="Enter the Password"
-                  className={`w-full  px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
-                    errors.password ? "border-red-500" : "border-gray-300"
-                  }`}
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute pt-8 right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
-                  
-                >
-                  {showPassword ? (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                    </svg>
-                  ) : (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                    </svg>
-                  )}
-                </button>
-              </div>
-              {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
-              )}
-
-            
+              <input
+                type={showPassword ? "text" : "password"}
+                {...getFieldProps("password")}
+                placeholder="Enter the Password"
+                className={`w-full   px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition ${
+                  errors.password ? "border-red-500" : "border-gray-300"
+                }`}
+              />
+              <button
+                type="button"
+                onClick={togglePasswordVisibility}
+                className="absolute pt-8 right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+              >
+                {showPassword ? (
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
+                    />
+                  </svg>
+                )}
+              </button>
+            </div>
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+            )}
 
             {/* Forgot Password */}
             <div className="text-right">
@@ -152,7 +170,7 @@ const login = useAuthStore((state)=> state.login)
               disabled={isLoading}
               className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-200 transform hover:scale-[1.02]"
             >
-            {isLoading ? "signing in" : "Sign in"}
+              {isLoading ? "signing in" : "Sign in"}
             </button>
           </form>
 

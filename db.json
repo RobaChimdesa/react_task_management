@@ -10,8 +10,8 @@
     {
       "name": "Ano Chimdesa",
       "email": "ano123@gmail.com",
-      "password": "12345678",
-      "confirmPassword": "12345678",
+      "password": "12345679",
+      "confirmPassword": "12345679",
       "id": "PhxoIWTbfYU"
     },
     {
@@ -20,6 +20,13 @@
       "password": "12345678",
       "confirmPassword": "12345678",
       "id": "b5lXEyQyY7I"
+    },
+    {
+      "name": "beka addisu",
+      "email": "beka@gmail.com",
+      "password": "123123",
+      "confirmPassword": "123123",
+      "id": "kuMmxFmy_RY"
     }
   ],
   "tasks": [
@@ -55,7 +62,7 @@
     },
     {
       "title": "make breakfast",
-      "completed": false,
+      "completed": true,
       "userId": "x3RLsdq6_Pw",
       "deadline": "2026-04-25",
       "id": "PBJN5pdu5wI"
@@ -87,6 +94,13 @@
       "userId": "PhxoIWTbfYU",
       "deadline": "2026-04-27",
       "id": "Mh4DR-9a9M0"
+    },
+    {
+      "title": "read bible",
+      "completed": false,
+      "userId": "kuMmxFmy_RY",
+      "deadline": "2026-05-03",
+      "id": "rNU2VnK5AjE"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

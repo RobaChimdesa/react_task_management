@@ -1,6 +1,6 @@
 const FooterPage = () => {
   return (
-    <footer className="w-full mt-20 bg-white/10 backdrop-blur-md text-white py-8 px-6">
+    <footer className="w-full mt-20 bg-white/10 backdrop-blur-md text-white py-8 px-6 ">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-1">
         {/* Left: Logo + description */}
         <div className="text-center md:text-left">
