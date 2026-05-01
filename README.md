@@ -1,73 +1,122 @@
-# React + TypeScript + Vite
+# 📝 Task Management App (Tasky)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern task management web application built with **React, Zustand, Tailwind CSS, and JSON Server**.  
+This app allows users to register, log in, and manage their personal tasks efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+### 🔐 Authentication
+- User Sign Up
+- User Sign In
+- Prevent duplicate email registration
+- Store logged-in user (Zustand + localStorage)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### ✅ Task Management
+- Create tasks
+- View all tasks (per user)
+- Update tasks
+- Delete tasks
+- Add deadline to tasks
+- Task ownership (each user sees only their tasks)
 
-## Expanding the ESLint configuration
+### 🛒 Cart-like Logic (Advanced State Practice)
+- Add items
+- Increase / decrease quantity
+- Remove items safely (no negative values)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🌙 Theme System
+- Light / Dark mode toggle
+- Theme stored in localStorage
+- Global UI theme switching using Tailwind
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 🔍 Search
+- Search tasks by title or keyword
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 🧪 Testing
+- Unit testing with **Vitest**
+- UI testing with **React Testing Library**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- ⚛️ React (Vite)
+- 🗂️ Zustand (State Management)
+- 🎨 Tailwind CSS
+- 🌐 JSON Server (Mock Backend)
+- 🧪 Vitest + React Testing Library
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 📁 Project Structure
+
+src/
+│
+├── component/ # Reusable UI components
+├── module/ # Shared modules (Header, Footer, etc.)
+├── pages/ # Main pages (Login, Signup, Tasks)
+├── store/ # Zustand stores (auth, theme, cart)
+├── hooks/ # Custom hooks (useForm, etc.)
+├── routes/ # Routing setup
+├── assets/ # Images and static files
+└── test/ # Unit tests
+
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the project
+
+```bash
+git clone <your-repo-url>
+cd task-management-app
+
+2. Install dependencies
+
+npm install
+
+3. Run JSON Server (Backend)
+
+Create a db.json file:
+
+{
+  "users": [],
+  "tasks": []
+}
+
+Start server:
+
+npx json-server --watch db.json --port 3000
+
+4. Run the frontend
+
+npm run dev
+
+5. Run tests
+npm run test
+
+📌 Future Improvements
+🔒 JWT Authentication (real backend)
+☁️ Deploy to cloud (Vercel / Netlify)
+📱 Mobile responsiveness improvements
+🧠 Advanced filters (status, priority)
+📊 Dashboard analytics
+
+🧑‍💻 Author
+
+Roba Chimdessa
+
+💡 Learning Goals Achieved
+
+This project helped practice:
+
+Component-based architecture
+State management with Zustand
+Form handling with custom hooks
+API integration
+Authentication logic
+UI/UX design with Tailwind
+Testing with Vitest
